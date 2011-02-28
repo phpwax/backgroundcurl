@@ -52,7 +52,9 @@ class WaxBackgroundCurl{
     if($this->username && $this->password) curl_setopt($session, CURLOPT_USERPWD, $this->username.':'.$this->password);
     
     $exec = curl_exec($session);
-    $info = curl_getInfo($session);
+    $info = curl_getinfo($session);
+    
+    curl_close($session);
     
     if($info['http_code'] == 200){
       if($this->cache) $this->set_cache($exec);
