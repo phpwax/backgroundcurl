@@ -42,6 +42,7 @@ class WaxBackgroundCurl{
   public function sync_curl(){
     $session = curl_init($this->url);
     if($this->headers) curl_setopt($session, CURLOPT_HTTPHEADER, $this->headers);
+    curl_setopt($session, CURLOPT_TIMEOUT, 60);
     curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($session, CURLOPT_FOLLOWLOCATION, 1);
     if($this->post_string){
