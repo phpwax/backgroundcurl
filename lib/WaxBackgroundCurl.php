@@ -6,6 +6,7 @@ class WaxBackgroundCurl{
   public $post_string = false;
   public $username = false;
   public $password = false;
+  public $return_info_on_error = false;
   
   public $cache = true;
   public $cache_age = 300; //60 * 5 - seconds in 5 minutes
@@ -59,6 +60,9 @@ class WaxBackgroundCurl{
     if($info['http_code'] == 200){
       if($this->cache) $this->set_cache($exec);
       return $exec;
+    }else{
+      WaxLog::log("error", "WaxBackgroundCurl Error. Response:\n".print_r($exec, 1)."\nCurl Info:\n".print_r($info, 1));
+      if($this->return_info_on_error) return array("response"=>$exec, "info"=>$info);
     }
   }
   
