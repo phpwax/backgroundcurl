@@ -20,7 +20,7 @@ class WaxBackgroundCurl{
     
     //setup cache path
     if(defined("CACHE_DIR")) $this->cache_dir = CACHE_DIR.$this->cache_dir;
-    $this->key = md5($this->url);
+    $this->key = md5($this->url.$this->headers.$this->post_string);
     $this->path = $this->cache_dir.$this->key;
   }
   
