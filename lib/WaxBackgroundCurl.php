@@ -1,7 +1,7 @@
 <?
 class WaxBackgroundCurl{
   
-  public $headers = array("Content-Type: application/html; charset=UTF-8", "Accept: application/html; charset=UTF-8");
+  public $headers = false;
   public $url = false;
   public $post_string = false;
   public $username = false;
@@ -41,7 +41,7 @@ class WaxBackgroundCurl{
   
   public function sync_curl(){
     $session = curl_init($this->url);
-    curl_setopt($session, CURLOPT_HTTPHEADER, $this->headers);
+    if($this->headers) curl_setopt($session, CURLOPT_HTTPHEADER, $this->headers);
     curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($session, CURLOPT_FOLLOWLOCATION, 1);
     if($this->post_string){
