@@ -26,7 +26,10 @@ class WaxBackgroundCurl{
   }
   
   public function fetch($url=false){
-    if($url) $this->url = $url;
+    if($url){
+      $this->url = $url;
+      $this->key = md5($this->url.$this->headers.$this->post_string);
+    }
     if($this->cache){
       $valid = $this->cache_valid();
       $cache_content = $this->cache();
