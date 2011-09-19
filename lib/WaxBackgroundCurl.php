@@ -29,6 +29,7 @@ class WaxBackgroundCurl{
     if($url){
       $this->url = $url;
       $this->key = md5($this->url.$this->headers.$this->post_string);
+      $this->path = $this->cache_dir.$this->key;
     }
     if($this->cache){
       $valid = $this->cache_valid();
