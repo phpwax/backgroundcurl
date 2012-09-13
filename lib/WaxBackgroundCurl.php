@@ -61,16 +61,16 @@ class WaxBackgroundCurl{
     }
     if($this->useragent) curl_setopt($session, CURLOPT_USERAGENT, $this->useragent);
     
-    $exec = curl_exec($session);
-    $info = curl_getinfo($session);
+    $this->return_value = curl_exec($session);
+    $this->return_info = curl_getinfo($session);
     
     curl_close($session);
     
-    if($info['http_code'] == 200){
-      if($this->cache) $this->set_cache($exec);
-      return $exec;
+    if($this->return_info['http_code'] == 200){
+      if($this->cache) $this->set_cache($this->return_value);
+      return $this->return_value;
     }else{
-      if($this->return_info_on_error) return array("response"=>$exec, "info"=>$info);
+      if($this->return_info_on_error) return array("response"=>$this->return_value, "info"=>$this->return_info);
     }
   }
   
