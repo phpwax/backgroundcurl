@@ -1,0 +1,13 @@
+{
+    "name": "phpwax/backgroundcurl",
+    "authors": [
+        {
+            "name": "Charles Marshall",
+            "email": "charles@oneblackbear.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+
+    }
+}
