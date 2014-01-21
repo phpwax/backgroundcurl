@@ -56,7 +56,7 @@ class WaxBackgroundCurl{
       curl_setopt($session, CURLOPT_POSTFIELDS, $this->post_string);
     }
 
-    foreach($this->curl_opts as $opt=>$value) curl_setopt($session, $opt, $value);
+    foreach($this->curl_opts as $opt=>$value) curl_setopt($session, constant($opt), $value);
 
     if($this->username && $this->password) curl_setopt($session, CURLOPT_USERPWD, $this->username.':'.$this->password);
     if($this->cookies){
